@@ -19,6 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :control do |control|
     control.vm.network :private_network, ip: "192.168.101.5"
     control.vm.hostname = "control.local"
+    config.ssh.forward_agent = true
   end
 
   config.vm.define :db do |db|

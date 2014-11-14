@@ -16,6 +16,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.cache.scope = :box
   end
 
+  config.vm.define :control do |control|
+    control.vm.network :private_network, ip: "192.168.101.5"
+    control.vm.hostname = "control.local"
+  end
+
   config.vm.define :db do |db|
     db.vm.network :private_network, ip: "192.168.101.10"
     db.vm.network "forwarded_port", guest: 3306, host: 3306, auto_correct: true
